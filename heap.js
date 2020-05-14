@@ -1,0 +1,1 @@
+document.getElementById("title-text").innerHTML = "New Text"
