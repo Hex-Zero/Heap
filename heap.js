@@ -9,7 +9,7 @@ const generateRandomArray = (amount = 10, min = 0, max = 10) =>{
        node = document.createElement("div")
         node.setAttribute("id","node-" + i)
         node.setAttribute("class","nodes")
-        node.appendChild(document.createTextNode(Math.floor(Math.random() * max)))
+        node.appendChild(document.createTextNode(Math.floor(Math.random() * ( max - min )) + min))
         resultingArray.push(node)
     }
     return resultingArray
