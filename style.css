@@ -1,11 +1,13 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-size: 32px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 32px;
 }
-body{
-    display: flex;
-    justify-content: center;
-    padding-top:2rem;
+body {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+.nodes {
 }
