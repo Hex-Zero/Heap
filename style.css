@@ -5,9 +5,13 @@
   font-size: 32px;
 }
 body {
-  display: flex;
-  justify-content: center;
   padding-top: 2rem;
+  display: grid;
 }
+
 .nodes {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-flow: row;
+  border: 3px black solid;
 }

@@ -29,4 +29,4 @@ const generateRandomArray = (amount = 12, min = 0, max = 9) => {
     parentNode.appendChild(node);
   }
 };
-generateRandomArray(30);
+generateRandomArray(16);
