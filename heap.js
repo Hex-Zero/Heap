@@ -16,11 +16,14 @@ const generateRandomArray = (amount = 12, min = 0, max = 9) => {
     );
     if (i == 0) {
       parentNode = titleText;
+      node.classList.remove("nodes");
     } else {
       if (isLeft) {
         parentNode = document.getElementById(`node-${i / 2 - 0.5}`);
+        node.classList.add("left");
       } else {
         parentNode = document.getElementById(`node-${i / 2 - 1}`);
+        node.classList.add("right");
       }
     }
 
@@ -29,4 +32,4 @@ const generateRandomArray = (amount = 12, min = 0, max = 9) => {
     parentNode.appendChild(node);
   }
 };
-generateRandomArray(16);
+generateRandomArray(50);

@@ -6,12 +6,17 @@
 }
 body {
   padding-top: 2rem;
-  display: grid;
+  display: flex;
+  justify-content: center;
 }
 
 .nodes {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-auto-flow: row;
-  border: 3px black solid;
+  margin-top: 50px;
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
 }
