@@ -3,12 +3,12 @@ titleText.innerHTML = "New Text";
 let rect = titleText.getBoundingClientRect();
 console.log(rect);
 
+const nodeArray = [];
 const generateRandomArray = (amount = 12, min = 0, max = 9) => {
   const resultingArray = [];
   let node;
   let paragraph;
   let parentNode;
-  let rect;
   let isLeft = false;
   for (let i = 0; i < amount; i++) {
     node = document.createElement("div");
@@ -34,10 +34,19 @@ const generateRandomArray = (amount = 12, min = 0, max = 9) => {
         node.classList.add("right");
       }
     }
-    console.log(paragraph.getBoundingClientRect());
+    // console.log(paragraph.getBoundingClientRect());
+    // console.log(titleText.getBoundingClientRect());
     isLeft = !isLeft;
+    nodeArray.push(node);
 
     parentNode.appendChild(node);
   }
+  return nodeArray;
 };
 generateRandomArray(16);
+
+const drawLines = () => {
+  nodeArray.forEach((item) => console.log(item.getBoundingClientRect()));
+};
+
+drawLines();
