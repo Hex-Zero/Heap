@@ -21,9 +21,9 @@ body {
 
 .left {
   float: left;
-  margin-right: -1.33rem;
+  margin-right: -1.25rem;
 }
 .right {
   float: right;
-  margin-left: -1.33rem;
+  margin-left: -1.25rem;
 }
