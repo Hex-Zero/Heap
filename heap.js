@@ -12,10 +12,10 @@ const drawLines = (index, parentNode) => {
   line = document.createElementNS("http://www.w3.org/2000/svg", "line");
   lineSvg.setAttribute("width", "100%");
   lineSvg.setAttribute("height", "100%");
-  line.setAttribute("x1", childRectangle.x);
+  line.setAttribute("x1", childRectangle.x + 20);
   line.setAttribute("y1", childRectangle.y);
-  line.setAttribute("x2", parentRectangle.x);
-  line.setAttribute("y2", parentRectangle.y);
+  line.setAttribute("x2", parentRectangle.x + 23);
+  line.setAttribute("y2", parentRectangle.y - 10);
   line.setAttribute("stroke", "black");
   lineSvg.appendChild(line);
   bodyTag.appendChild(lineSvg);
@@ -50,16 +50,20 @@ const generateRandomArray = (amount = 12, min = 0, max = 9) => {
         parentNode = document.getElementById(`node-${i / 2 - 1}`);
         node.classList.add("right");
       }
+
+      nodeArray.push({
+        paragraph: paragraph,
+        parentNode: parentNode.firstChild,
+      });
     }
 
     // console.log(paragraph.getBoundingClientRect());
     // console.log(titleText.getBoundingClientRect());
     isLeft = !isLeft;
-    nodeArray.push({ paragraph: paragraph, parentNode: parentNode });
 
     parentNode.appendChild(node);
   }
   return nodeArray;
 };
-generateRandomArray(16);
+generateRandomArray(60);
 nodeArray.forEach((item) => drawLines(item.paragraph, item.parentNode));
