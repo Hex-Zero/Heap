@@ -27,3 +27,8 @@ body {
   float: right;
   margin-left: -1rem;
 }
+svg {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
