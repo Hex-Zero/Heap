@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: 32px;
+  font-size: 12px;
 }
 body {
   padding-top: 2rem;
@@ -11,12 +11,19 @@ body {
 }
 
 .nodes {
-  margin-top: 50px;
+  margin-top: 150px;
+}
+.heap-number {
+  border: 1px magenta solid;
+  padding: 0.6rem 0.9rem;
+  border-radius: 50%;
 }
 
 .left {
   float: left;
+  margin-right: -1.33rem;
 }
 .right {
   float: right;
+  margin-left: -1.33rem;
 }

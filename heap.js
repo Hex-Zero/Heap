@@ -4,16 +4,21 @@ titleText.innerHTML = "New Text";
 const generateRandomArray = (amount = 12, min = 0, max = 9) => {
   const resultingArray = [];
   let node;
+  let paragraph;
   let parentNode;
   let isLeft = false;
   for (let i = 0; i < amount; i++) {
     node = document.createElement("div");
+    paragraph = document.createElement("span");
     node.setAttribute("id", "node-" + i);
     node.setAttribute("class", "nodes");
-    node.appendChild(
+    paragraph.setAttribute("class", "heap-number");
+
+    paragraph.appendChild(
       //   document.createTextNode(Math.floor(Math.random() * (max - min + 1)) + min)
       document.createTextNode(i)
     );
+    node.appendChild(paragraph);
     if (i == 0) {
       parentNode = titleText;
       node.classList.remove("nodes");
@@ -32,4 +37,4 @@ const generateRandomArray = (amount = 12, min = 0, max = 9) => {
     parentNode.appendChild(node);
   }
 };
-generateRandomArray(50);
+generateRandomArray(120);
