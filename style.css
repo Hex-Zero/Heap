@@ -14,21 +14,36 @@ body {
 .nodes {
   margin-top: 150px;
 }
-#title-text {
+
+#heap-size-input {
+  position: absolute;
+  top: 100px;
+  left: 300px;
+}
+#test-button {
+  position: absolute;
+  padding: 5px 12px;
+  top: 150px;
+  left: 300px;
 }
 .heap-number {
   padding: 0.6rem 0.9rem;
   border-radius: 50%;
   background: whitesmoke;
 }
-
+main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
 .left {
   float: left;
-  margin-right: -1rem;
+  /* margin-right: -1rem; */
 }
 .right {
   float: right;
-  margin-left: -1rem;
+  /* margin-left: -1rem; */
 }
 svg {
   width: 100vw;

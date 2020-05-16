@@ -1,15 +1,31 @@
-const titleText = document.getElementById("title-text");
-titleText.innerHTML = "New Text";
-let rect = titleText.getBoundingClientRect();
+// const titleText = document.getElementById("title-text");
+// titleText.innerHTML = "New Text";
+// let rect = titleText.getBoundingClientRect();
 let bodyTag = document.getElementById("body");
 let line;
 let lineSvg;
+let heapSize = document.createElement("input");
+let testButton = document.createElement("button");
+heapSize.setAttribute("id", "heap-size-input");
+heapSize.setAttribute("type", "number");
+let mainTag;
+const createMainTag = () => {
+  mainTag = document.createElement("main");
+  mainTag.setAttribute("id", "main-tag");
+  bodyTag.appendChild(mainTag);
+};
+createMainTag();
+testButton.setAttribute("id", "test-button");
+testButton.innerHTML = "Test";
+bodyTag.appendChild(heapSize);
+
+bodyTag.appendChild(testButton);
+
+let svgArray = [];
 
 const drawLines = (index, parentNode) => {
   let parentRectangle = parentNode.getBoundingClientRect();
   let childRectangle = index.getBoundingClientRect();
-  console.log(parentRectangle);
-  console.log(childRectangle);
 
   lineSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -22,11 +38,27 @@ const drawLines = (index, parentNode) => {
   line.setAttribute("stroke", "rebeccapurple");
   line.setAttribute("stroke-width", "5");
   lineSvg.appendChild(line);
-  bodyTag.appendChild(lineSvg);
+  mainTag.appendChild(lineSvg);
+  svgArray.push(lineSvg);
 };
-const nodeArray = [];
-const generateRandomArray = (amount = 12, min = 0, max = 9) => {
-  const resultingArray = [];
+
+const removeTags = () => {
+  if (document.getElementById("node-" + 0)) {
+    bodyTag.removeChild(document.getElementById("node-" + 0));
+  }
+};
+
+const removeSvgLines = () => {
+  bodyTag.removeChild(mainTag);
+  createMainTag();
+};
+const childAndParentArray = [];
+let firstNode = "";
+
+const generateRandomArray = (amount = 12, min = 0, max = amount) => {
+  removeSvgLines();
+  removeTags();
+  nodeArray = [];
   let node;
   let paragraph;
   let parentNode;
@@ -44,8 +76,9 @@ const generateRandomArray = (amount = 12, min = 0, max = 9) => {
     );
     node.appendChild(paragraph);
     if (i == 0) {
-      parentNode = titleText;
+      parentNode = bodyTag;
       node.classList.remove("nodes");
+      firstNode = node;
     } else {
       if (isLeft) {
         parentNode = document.getElementById(`node-${i / 2 - 0.5}`);
@@ -55,19 +88,27 @@ const generateRandomArray = (amount = 12, min = 0, max = 9) => {
         node.classList.add("right");
       }
 
-      nodeArray.push({
+      childAndParentArray.push({
         paragraph: paragraph,
         parentNode: parentNode.firstChild,
       });
     }
 
-    // console.log(paragraph.getBoundingClientRect());
-    // console.log(titleText.getBoundingClientRect());
     isLeft = !isLeft;
 
     parentNode.appendChild(node);
   }
-  return nodeArray;
+  svgArray = [];
+
+  childAndParentArray.forEach((item) =>
+    drawLines(item.paragraph, item.parentNode)
+  );
 };
-generateRandomArray(63);
-nodeArray.forEach((item) => drawLines(item.paragraph, item.parentNode));
+
+heapSize.value = 28;
+generateRandomArray(heapSize.value);
+
+heapSize.addEventListener("change", () => generateRandomArray(heapSize.value));
+testButton.addEventListener("click", () => {
+  removeSvgLines();
+});
