@@ -76,11 +76,8 @@ const generateRandomArray = (amount = 12, min = 0, max = amount) => {
     node.setAttribute("id", "node-" + i);
     node.setAttribute("class", "nodes");
     paragraph.setAttribute("class", "heap-number");
-
-    paragraph.appendChild(
-      //   document.createTextNode(Math.floor(Math.random() * (max - min + 1)) + min)
-      document.createTextNode(i)
-    );
+    let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    paragraph.appendChild(document.createTextNode(randomNumber));
     node.appendChild(paragraph);
     if (i == 0) {
       parentNode = bodyTag;
@@ -117,5 +114,5 @@ generateRandomArray(heapSize.value);
 
 heapSize.addEventListener("change", () => generateRandomArray(heapSize.value));
 testButton.addEventListener("click", () => {
-  removeSvgLines();
+  (heapSize.value = 18), generateRandomArray(heapSize.value);
 });
