@@ -8,6 +8,7 @@ let heapSize = document.createElement("input");
 let testButton = document.createElement("button");
 heapSize.setAttribute("id", "heap-size-input");
 heapSize.setAttribute("type", "number");
+
 let mainTag;
 const createMainTag = () => {
   mainTag = document.createElement("main");
@@ -15,6 +16,12 @@ const createMainTag = () => {
   bodyTag.appendChild(mainTag);
 };
 createMainTag();
+
+let heapSizeLabel = document.createElement("label");
+heapSizeLabel.setAttribute("for", "heap-size-input");
+heapSizeLabel.innerHTML = "Heap Size";
+heapSizeLabel.setAttribute("id", "heap-size-label");
+bodyTag.appendChild(heapSizeLabel);
 testButton.setAttribute("id", "test-button");
 testButton.innerHTML = "Test";
 bodyTag.appendChild(heapSize);
