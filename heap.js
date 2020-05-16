@@ -8,15 +8,19 @@ let lineSvg;
 const drawLines = (index, parentNode) => {
   let parentRectangle = parentNode.getBoundingClientRect();
   let childRectangle = index.getBoundingClientRect();
+  console.log(parentRectangle);
+  console.log(childRectangle);
+
   lineSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   line = document.createElementNS("http://www.w3.org/2000/svg", "line");
   lineSvg.setAttribute("width", "100%");
   lineSvg.setAttribute("height", "100%");
-  line.setAttribute("x1", childRectangle.x + 20);
-  line.setAttribute("y1", childRectangle.y);
-  line.setAttribute("x2", parentRectangle.x + 23);
-  line.setAttribute("y2", parentRectangle.y - 10);
-  line.setAttribute("stroke", "black");
+  line.setAttribute("x1", childRectangle.x + childRectangle.width / 2);
+  line.setAttribute("y1", childRectangle.y - childRectangle.height / 2);
+  line.setAttribute("x2", parentRectangle.x + parentRectangle.width / 2);
+  line.setAttribute("y2", parentRectangle.y - parentRectangle.height / 2);
+  line.setAttribute("stroke", "rebeccapurple");
+  line.setAttribute("stroke-width", "5");
   lineSvg.appendChild(line);
   bodyTag.appendChild(lineSvg);
 };
@@ -65,5 +69,5 @@ const generateRandomArray = (amount = 12, min = 0, max = 9) => {
   }
   return nodeArray;
 };
-generateRandomArray(60);
+generateRandomArray(63);
 nodeArray.forEach((item) => drawLines(item.paragraph, item.parentNode));
