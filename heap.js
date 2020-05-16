@@ -76,8 +76,8 @@ const generateRandomArray = (amount = 12, min = 0, max = amount) => {
     node.setAttribute("id", "node-" + i);
     node.setAttribute("class", "nodes");
     paragraph.setAttribute("class", "heap-number");
-    let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    paragraph.appendChild(document.createTextNode(randomNumber));
+    // let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    paragraph.appendChild(document.createTextNode(heapValueArray[i]));
     node.appendChild(paragraph);
     if (i == 0) {
       parentNode = bodyTag;
@@ -108,8 +108,14 @@ const generateRandomArray = (amount = 12, min = 0, max = amount) => {
     drawLines(item.paragraph, item.parentNode)
   );
 };
-
+const heapValueArray = [];
 heapSize.value = 28;
+const fillHeapValues = () => {
+  for (let i = 0; i < heapSize.value; i++) {
+    heapValueArray.push(Math.floor(Math.random() * heapSize.value));
+  }
+};
+fillHeapValues();
 generateRandomArray(heapSize.value);
 
 heapSize.addEventListener("change", () => generateRandomArray(heapSize.value));
