@@ -109,7 +109,7 @@ const generateRandomArray = (amount = 12, min = 0, max = amount) => {
   );
 };
 const heapValueArray = [];
-heapSize.value = 26;
+heapSize.value = 27;
 const fillHeapValues = () => {
   for (let i = 0; i < heapSize.value; i++) {
     heapValueArray.push(Math.floor(Math.random() * heapSize.value));
